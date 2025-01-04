@@ -13,7 +13,8 @@ public class Utilizator
         ID = id;
         Nume = nume;
         Prenume = prenume;
-        
-
+        Email = email;
+        Parola= parola;
     }
+    
 }
