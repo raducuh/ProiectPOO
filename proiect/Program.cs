@@ -11,7 +11,6 @@ namespace proiect
         {
 
             var organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
-
             organizator.LansareEveniment();
             Console.WriteLine("Lista evenimentelor lansate:");
             foreach (var eveniment in organizator.Evenimente)
