@@ -10,6 +10,10 @@ namespace proiect
         {
             while (true)
             {
+                Console.WriteLine("1.Logare ");
+                Console.WriteLine("2.  ");
+                Console.WriteLine("3.  ");
+                Console.WriteLine("4. ");
                 Console.WriteLine("Alegeti o optiune: ");
                 int optiune= int.Parse(Console.ReadLine());
                 switch (optiune)
