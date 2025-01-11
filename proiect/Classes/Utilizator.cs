@@ -16,4 +16,5 @@ public class Utilizator
         Email = email;
         Parola= parola;
     }
+    
 }

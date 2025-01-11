@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using DefaultNamespace;
-
-
 namespace proiect
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             Organizator organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
 
             organizator.LansareEveniment();
@@ -30,10 +28,19 @@ namespace proiect
                 Console.WriteLine("2. Delogare");
                 Console.WriteLine("3. Inregistrare");
                 Console.WriteLine("4. Iesire");
+
+            while (true)
+            {
+                Console.WriteLine("1.Logare ");
+                Console.WriteLine("2. ceva  ");
+                Console.WriteLine("3.  ");
+                Console.WriteLine("4. ");
+
                 Console.WriteLine("Alegeti o optiune: ");
                 int optiune= int.Parse(Console.ReadLine());
                 switch (optiune)
                 {
+
 
                     case 1:
                         logger.AfisareUtilizatori();
@@ -43,6 +50,9 @@ namespace proiect
                     case 3:
                         logger.AddUtilizator();
                         break;
+
+                    
+
                 }
                 
                 
