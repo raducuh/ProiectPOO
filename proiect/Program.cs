@@ -9,7 +9,7 @@ namespace proiect
     {
         static void Main(string[] args)
         {
-            var Logger = new Logare();
+            var logger = new Logare();
             while (true)
             {
                 Console.WriteLine("1.Logare ");
@@ -21,8 +21,8 @@ namespace proiect
                 switch (optiune)
                 {
                     case 1:
-                        Logger.AddUtilizator();
-                        Logger.AfisareUtilizatori();
+                        logger.AddUtilizator();
+                        logger.AfisareUtilizatori();
                         break;
                     
                 }

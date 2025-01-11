@@ -30,7 +30,8 @@ public class Logare
        
         Console.WriteLine("Confirmare parola: ");
         confirma=Console.ReadLine();
-        utilizator=new Utilizator(i,nume,prenume,email,parola);
+        if( nume!=null && prenume!=null && email!=null && parola!=null)
+         utilizator=new Utilizator(i,nume,prenume,email,parola);
         
         if (confirma == utilizator.Parola)
         {
@@ -46,9 +47,9 @@ public class Logare
 
     public void AfisareUtilizatori()
     {
-        foreach (Utilizator utilizator in ListaUtilizatori)
+        foreach (Utilizator utilizator1 in ListaUtilizatori)
         {
-            Console.WriteLine($"{utilizator.Nume},{utilizator.Prenume}, {utilizator.Email}");
+            Console.WriteLine($"{utilizator1.Nume},{utilizator1.Prenume}, {utilizator1.Email}");
         }
     }
 }
