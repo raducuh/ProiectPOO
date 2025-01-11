@@ -11,20 +11,32 @@ namespace proiect
         {    
             
             var organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
-            organizator.LansareEveniment();
-            Console.WriteLine("Lista evenimentelor lansate:");
-            foreach (var eveniment in organizator.Evenimente)
+           
+            while (true)
             {
-                Console.WriteLine($"- {eveniment.Nume}, {eveniment.Data.ToShortDateString()}");
+                Console.WriteLine("Alege o optiune: ");
+                int optiune = Convert.ToInt32(Console.ReadLine());
+                switch (optiune)
+                {
+                    case 1:
+                        organizator.LansareEveniment();
+                        break;
+                    case 2:
+                        
+                        break;
+                    case 3:
+                        organizator.AfisareEvenimente();
+                        break;
+                    case 4:
+                        organizator.VerificareReviews();
+                        break;
+                    
+                }
             }
-            var client1 = new Client(5, "gigi", "becali", "email", "123");
-            var client2 = new Client(5, "gigi2", "becali2", "email2", "123");
 
-            var review1 = new Review(client1, 0);
-       
-            var review2 = new Review(client1, 0);
          
             organizator.VerificareReviews();
+            organizator.AfisareEvenimente();
           
         
             

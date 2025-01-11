@@ -40,6 +40,13 @@ public class Organizator:Utilizator
         Console.WriteLine($"Evenimentul '{nume}' a fost lansat cu succes!");
     }
 
+    public void AfisareEvenimente()
+    {
+        foreach (var eveniment in Evenimente)
+        {
+            Console.WriteLine($"{eveniment.Nume}, {eveniment.Descriere}, {eveniment.Capacitate}, {eveniment.Data.ToShortDateString()}");
+        }
+    }
     public void VerificareReviews()
     {
         foreach (var review in Reviews)
