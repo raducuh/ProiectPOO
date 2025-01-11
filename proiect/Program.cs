@@ -8,8 +8,8 @@ namespace proiect
     class Program
     {
         static void Main(string[] args)
-        {
-
+        {    
+            
             var organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
             organizator.LansareEveniment();
             Console.WriteLine("Lista evenimentelor lansate:");
@@ -17,6 +17,16 @@ namespace proiect
             {
                 Console.WriteLine($"- {eveniment.Nume}, {eveniment.Data.ToShortDateString()}");
             }
+            var client1 = new Client(5, "gigi", "becali", "email", "123");
+            var client2 = new Client(5, "gigi2", "becali2", "email2", "123");
+
+            var review1 = new Review(client1, 0);
+       
+            var review2 = new Review(client1, 0);
+         
+            organizator.VerificareReviews();
+          
+        
             
             
             

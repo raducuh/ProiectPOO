@@ -3,10 +3,12 @@
 public class Organizator:Utilizator
 {
     public List<Event> Evenimente { get; set; }
+    public List<Review> Reviews { get; set; }
     public Organizator(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume,
         email, parola)
     {
         Evenimente = new List<Event>();
+        Reviews = new List<Review>();
     }
     
     public void LansareEveniment()
@@ -36,6 +38,14 @@ public class Organizator:Utilizator
         Event nouEveniment = new Event( nume, descriere, capacitate, data);
         Evenimente.Add(nouEveniment);
         Console.WriteLine($"Evenimentul '{nume}' a fost lansat cu succes!");
+    }
+
+    public void VerificareReviews()
+    {
+        foreach (var review in Reviews)
+        {
+          review.AcordareFeedback();
+        }
     }
     
     //public void UpdateDetaliiEveniment()
