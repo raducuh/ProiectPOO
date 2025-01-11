@@ -43,10 +43,6 @@ public class Logare
             Console.WriteLine("Autentificare reusita!");
             ListaUtilizatori.Add(utilizator);
         }
-        
-        if(confirma==parola)
-            Console.WriteLine("Autentificare reusita!");
-
         else
         {
             Console.WriteLine("Ai gresit parola! Incearca sa te autentifici iar.");
