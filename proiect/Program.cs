@@ -11,7 +11,18 @@ namespace proiect
     {
         static void Main(string[] args)
         {
+            Organizator organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
+
+            organizator.LansareEveniment();
+            Console.WriteLine("Lista evenimentelor lansate:");
+            foreach (var eveniment in organizator.Evenimente)
+            {
+                Console.WriteLine($"- {eveniment.Nume}, {eveniment.Data.ToShortDateString()}");
+            }
             
+            
+            
+            /*
             var logger = new Logare();
             while (true)
             {
@@ -32,12 +43,11 @@ namespace proiect
                     case 3:
                         logger.AddUtilizator();
                         break;
-                    
-
-                    
                 }
                 
+                
             }
+            */
         }
     }
 }

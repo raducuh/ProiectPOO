@@ -42,7 +42,6 @@ public class Logare
             i++;
             Console.WriteLine("Autentificare reusita!");
             ListaUtilizatori.Add(utilizator);
-            utilizator.EsteLogat = true;
         }
         else
         {
