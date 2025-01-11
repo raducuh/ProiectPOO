@@ -23,11 +23,7 @@ public class Logare
         Console.WriteLine("Introduceti un prenume: ");
         string prenume= Console.ReadLine();
         
-    public void AddUtilizator()
-    {
-        Console.WriteLine("Introduceti un nume: ");
-        string nume= Console.ReadLine();
-        
+
 
         Console.WriteLine("Introduceti un email: ");
         string email= Console.ReadLine();
@@ -47,10 +43,6 @@ public class Logare
             Console.WriteLine("Autentificare reusita!");
             ListaUtilizatori.Add(utilizator);
         }
-
-        
-        Console.WriteLine("Confirmare parola: ");
-        string confirma= Console.ReadLine();
         
         if(confirma==parola)
             Console.WriteLine("Autentificare reusita!");
