@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 
 namespace proiect
 {
@@ -9,7 +10,7 @@ namespace proiect
         static void Main(string[] args)
         {
 
-            Organizator organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
+            var organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
 
             organizator.LansareEveniment();
             Console.WriteLine("Lista evenimentelor lansate:");
