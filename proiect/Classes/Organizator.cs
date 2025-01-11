@@ -1,14 +1,18 @@
-﻿namespace DefaultNamespace;
+﻿using System.Globalization;
+
+namespace DefaultNamespace;
 
 public class Organizator:Utilizator
 {
     public List<Event> Evenimente { get; set; }
     public List<Review> Reviews { get; set; }
+    public List<Client> Clients { get; set; }
     public Organizator(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume,
         email, parola)
     {
         Evenimente = new List<Event>();
         Reviews = new List<Review>();
+        Clients = new List<Client>();
     }
     
     public void LansareEveniment()
@@ -32,7 +36,8 @@ public class Organizator:Utilizator
         }
         else
         {
-            Console.WriteLine("Data introdusa nu este valida. Incercati din nou.");
+            Console.WriteLine("Data introdusa nu este valida. Incercati din nou sa lansati un eveniment.");
+            return;
         }
 
         Event nouEveniment = new Event( nume, descriere, capacitate, data);
@@ -44,7 +49,7 @@ public class Organizator:Utilizator
     {
         foreach (var eveniment in Evenimente)
         {
-            Console.WriteLine($"{eveniment.Nume}, {eveniment.Descriere}, {eveniment.Capacitate}, {eveniment.Data.ToShortDateString()}");
+            Console.WriteLine($"Nume eveniment:{eveniment.Nume}\n-------------\nTotal capacitate: {eveniment.Capacitate}\n-------------\nTotal participanti:{Clients.Count}");
         }
     }
     public void VerificareReviews()
@@ -53,6 +58,18 @@ public class Organizator:Utilizator
         {
           review.AcordareFeedback();
         }
+    }
+    public void DetaliiEvenimentUpdate()
+    {
+        string mesaj;
+        Console.WriteLine("Adaugati detalii/update-uri pentru participanti:");
+        mesaj = Console.ReadLine();
+        Console.WriteLine($"Ati transmis mai departe mesajul: {mesaj}");
+    }
+
+    public void AddClient(Client client)
+    {
+        Clients.Add(client);
     }
     
     //public void UpdateDetaliiEveniment()

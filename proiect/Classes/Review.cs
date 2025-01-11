@@ -25,7 +25,7 @@ public class Review
             Console.WriteLine("Evaluare respinsa!Numarul introdus de stele trebuie sa fie intre 1 si 5!");
             
         }
-        
     }
+    
     
 }

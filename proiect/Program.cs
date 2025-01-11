@@ -11,7 +11,10 @@ namespace proiect
         {    
             
             var organizator = new Organizator(1, "Ion", "Popescu", "ion.popescu@example.com", "parola123");
-           
+            var client1= new Client(1,"Ion","Popescu","gigel@gmail.com","parola123");
+            var client2 = new Client(2, "Ion2", "Popescu2", "gigel@gmail.com2","2");
+            organizator.AddClient(client1);
+            organizator.AddClient(client2);
             while (true)
             {
                 Console.WriteLine("Alege o optiune: ");
@@ -22,7 +25,7 @@ namespace proiect
                         organizator.LansareEveniment();
                         break;
                     case 2:
-                        
+                        organizator.DetaliiEvenimentUpdate();
                         break;
                     case 3:
                         organizator.AfisareEvenimente();
@@ -35,8 +38,8 @@ namespace proiect
             }
 
          
-            organizator.VerificareReviews();
-            organizator.AfisareEvenimente();
+            //organizator.VerificareReviews();
+            //organizator.AfisareEvenimente();
           
         
             
