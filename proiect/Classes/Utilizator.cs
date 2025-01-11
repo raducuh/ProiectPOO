@@ -2,7 +2,7 @@
 
 public class Utilizator
 {
-    public int ID { get; set; }
+    public int Id { get; set; }
     public string Nume { get; set; }
     public string Prenume { get; set; }
     public string Email { get; set; }
@@ -10,7 +10,7 @@ public class Utilizator
 
     public Utilizator(int id, string nume, string prenume, string email, string parola)
     {
-        ID = id;
+        Id = id;
         Nume = nume;
         Prenume = prenume;
         Email = email;
