@@ -3,6 +3,7 @@
 public class Logare
 {
     public List<Utilizator> ListaUtilizatori { get; private set; }
+
     private Utilizator utilizator;
     
 
@@ -22,11 +23,18 @@ public class Logare
         Console.WriteLine("Introduceti un prenume: ");
         string prenume= Console.ReadLine();
         
+    public void AddUtilizator()
+    {
+        Console.WriteLine("Introduceti un nume: ");
+        string nume= Console.ReadLine();
+        
+
         Console.WriteLine("Introduceti un email: ");
         string email= Console.ReadLine();
         
         Console.WriteLine("Introduceti o parola: ");
         string parola= Console.ReadLine();
+
        
         Console.WriteLine("Confirmare parola: ");
         confirma=Console.ReadLine();
@@ -39,10 +47,19 @@ public class Logare
             Console.WriteLine("Autentificare reusita!");
             ListaUtilizatori.Add(utilizator);
         }
+
+        
+        Console.WriteLine("Confirmare parola: ");
+        string confirma= Console.ReadLine();
+        
+        if(confirma==parola)
+            Console.WriteLine("Autentificare reusita!");
+
         else
         {
             Console.WriteLine("Ai gresit parola! Incearca sa te autentifici iar.");
         }
+
     }
 
     public void AfisareUtilizatori()
@@ -51,5 +68,6 @@ public class Logare
         {
             Console.WriteLine($"{utilizator1.Nume},{utilizator1.Prenume}, {utilizator1.Email}");
         }
+
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using DefaultNamespace;
+
 
 namespace proiect
 {
@@ -9,7 +11,9 @@ namespace proiect
     {
         static void Main(string[] args)
         {
+
             var logger = new Logare();
+
             while (true)
             {
                 Console.WriteLine("1.Logare ");
@@ -20,10 +24,12 @@ namespace proiect
                 int optiune= int.Parse(Console.ReadLine());
                 switch (optiune)
                 {
+
                     case 1:
                         logger.AddUtilizator();
                         logger.AfisareUtilizatori();
                         break;
+
                     
                 }
                 
