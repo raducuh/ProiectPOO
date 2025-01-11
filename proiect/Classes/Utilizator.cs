@@ -8,8 +8,6 @@ public class Utilizator
     public string Email { get;private set; }
     public string Parola { get;private set; }
     
-    //public bool EsteLogat  { get;  set; }
-
     public Utilizator(int id, string nume, string prenume, string email, string parola)
     {
         Id = id;
