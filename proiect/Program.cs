@@ -29,6 +29,7 @@ namespace proiect
                         break;
                     case 3:
                         organizator.AfisareEvenimente();
+                        organizator.SalvareEvenimenteInFisier();
                         break;
                     case 4:
                         organizator.VerificareReviews();

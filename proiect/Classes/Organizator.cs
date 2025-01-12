@@ -59,6 +59,8 @@ public class Organizator:Utilizator
 
             if (int.TryParse(mesajCapacitate, out capacitate) && capacitate > 0) 
             {
+                Console.WriteLine($"Capacitatea introdusa este valida: {capacitate}");
+               
                 break;
             }
             else
@@ -68,7 +70,6 @@ public class Organizator:Utilizator
         }
         DateTime data;
         DateTime azi=DateTime.Now;
-        string dataPtFisier;
         while (true)
         {
             Console.WriteLine("Introduceti data evenimentului (format: yyyy-MM-dd): ");
@@ -154,10 +155,19 @@ public class Organizator:Utilizator
 
     public void SalvareEvenimenteInFisier()
     {
-        foreach (var eveniment in Evenimente)
+        string folderPath = "Fisiere text";
+        string path = Path.Combine(folderPath, "evenimente.txt");
+     
+        using (StreamWriter writer = new StreamWriter(path, false)) 
         {
-            
+            foreach (var eveniment in Evenimente)
+            {
+                
+                writer.WriteLine($"{eveniment.Nume};{eveniment.Descriere};{eveniment.Capacitate};{eveniment.Data.ToString("yyyy-MM-dd")}");
+            }
         }
+
+        Console.WriteLine("Evenimentele au fost salvate in fisierul 'evenimente.txt'.");
     }
 
 
