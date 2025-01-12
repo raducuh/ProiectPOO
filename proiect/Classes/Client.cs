@@ -36,7 +36,7 @@ public class Client:Utilizator
                                 }
                                 else
                                 {
-                                        Console.WriteLine($"Evenimentul \"{evenimentAles.Nume}\" a atins capacitatea maxima. Nu va puteti inscrie la eveniment..");
+                                        Console.WriteLine($"Evenimentul: \"{evenimentAles.Nume}\" a atins capacitatea maxima. Nu va puteti inscrie la eveniment..");
                                 }
                         }
                         else
