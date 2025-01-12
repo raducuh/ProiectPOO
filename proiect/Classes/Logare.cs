@@ -3,59 +3,76 @@
 public class Logare
 {
     public List<Utilizator> ListaUtilizatori { get; private set; }
-
-    private Utilizator utilizator;
-    
+    private Utilizator utilizatorCurent;
 
     public Logare()
     {
         ListaUtilizatori = new List<Utilizator>();
     }
-    
-    public void AddUtilizator()
+
+    public bool AutentificareUtilizator()
     {
-        string confirma;
-        int i=1;
-        Console.WriteLine("Introduceti un nume: ");
+        Console.WriteLine("Introduceti emailul: ");
+        string email = Console.ReadLine();
         
-        string nume= Console.ReadLine();
+        Console.WriteLine("Introduceti parola: ");
+        string parola = Console.ReadLine();
         
-        Console.WriteLine("Introduceti un prenume: ");
-        string prenume= Console.ReadLine();
+        utilizatorCurent = ListaUtilizatori.FirstOrDefault(u => u.Email == email && u.Parola == parola);
         
-
-
-        Console.WriteLine("Introduceti un email: ");
-        string email= Console.ReadLine();
-        
-        Console.WriteLine("Introduceti o parola: ");
-        string parola= Console.ReadLine();
-
-       
-        Console.WriteLine("Confirmare parola: ");
-        confirma=Console.ReadLine();
-        if( nume!=null && prenume!=null && email!=null && parola!=null)
-         utilizator=new Utilizator(i,nume,prenume,email,parola);
-        
-        if (confirma == utilizator.Parola)
+        if (utilizatorCurent != null)
         {
-            i++;
             Console.WriteLine("Autentificare reusita!");
-            ListaUtilizatori.Add(utilizator);
+            return true;
         }
         else
         {
-            Console.WriteLine("Ai gresit parola! Incearca sa te autentifici iar.");
+            Console.WriteLine("Email sau parola incorecte.");
+            return false;
         }
+    }
 
+    public void Autentificare()
+    {
+        Console.WriteLine("Alege tipul de utilizator (1 - Organizator, 2 - Client): ");
+        int tipUtilizator = Convert.ToInt32(Console.ReadLine());
+        
+        Console.WriteLine("Introduceti numele: ");
+        string nume = Console.ReadLine();
+        
+        Console.WriteLine("Introduceti prenumele: ");
+        string prenume = Console.ReadLine();
+        
+        Console.WriteLine("Introduceti emailul: ");
+        string email = Console.ReadLine();
+        
+        Console.WriteLine("Introduceti parola: ");
+        string parola = Console.ReadLine();
+        
+        if (tipUtilizator == 1)
+        {
+            Organizator organizatorNou = new Organizator(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
+            ListaUtilizatori.Add(organizatorNou);
+            Console.WriteLine("Organizator adaugat cu succes!");
+        }
+        else if (tipUtilizator == 2)
+        {
+            Client clientNou = new Client(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
+            ListaUtilizatori.Add(clientNou);
+            Console.WriteLine("Client adaugat cu succes!");
+        }
     }
 
     public void AfisareUtilizatori()
     {
         foreach (Utilizator utilizator1 in ListaUtilizatori)
         {
-            Console.WriteLine($"{utilizator1.Nume},{utilizator1.Prenume}, {utilizator1.Email}");
+            Console.WriteLine($"{utilizator1.Nume}, {utilizator1.Prenume}, {utilizator1.Email}");
         }
+    }
 
+    public Utilizator GetUtilizatorCurent()
+    {
+        return utilizatorCurent;
     }
 }

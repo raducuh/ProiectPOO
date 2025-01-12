@@ -155,15 +155,26 @@ public class Organizator:Utilizator
 
     public void SalvareEvenimenteInFisier()
     {
-        string folderPath = "Fisiere text";
+        string directoryPath = Directory.GetCurrentDirectory();
+
+        string folderName = "FisiereText";
+
+        string folderPath = Path.Combine(directoryPath, folderName);
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
         string path = Path.Combine(folderPath, "evenimente.txt");
+
      
         using (StreamWriter writer = new StreamWriter(path, false)) 
         {
             foreach (var eveniment in Evenimente)
             {
                 
-                writer.WriteLine($"{eveniment.Nume};{eveniment.Descriere};{eveniment.Capacitate};{eveniment.Data.ToString("yyyy-MM-dd")}");
+                writer.WriteLine($"Nume eveniment: {eveniment.Nume};\n\nDescriere eveniment: {eveniment.Descriere};\n\nCapacitate eveniment: {eveniment.Capacitate};\n\nData eveniment: {eveniment.Data.ToString("yyyy-MM-dd")};");
             }
         }
 
@@ -175,7 +186,33 @@ public class Organizator:Utilizator
     {
         Clients.Add(client);
     }
+    public override void Meniu()
+    {
+        while (true)
+        {
+            Console.WriteLine("Meniu Organizator:");
+            Console.WriteLine("1. Lansare Eveniment");
+            Console.WriteLine("2. Afisare Evenimente");
+            Console.WriteLine("3. Verificare Review-uri");
+            Console.WriteLine("4. Iesire");
+            int optiune = Convert.ToInt32(Console.ReadLine());
 
+            switch (optiune)
+            {
+                case 1:
+                    LansareEveniment();
+                    break;
+                case 2:
+                    AfisareEvenimente();
+                    break;
+                case 3:
+                    VerificareReviews();
+                    break;
+                case 4:
+                    return;
+            }
+        }
+    }
     public override void AddUtilizator(Utilizator utilizator)
     {
         

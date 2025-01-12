@@ -24,5 +24,10 @@ public class Utilizator
         
     }
 
+    public virtual void Meniu()
+    {
+        
+    }
+
  
 }
