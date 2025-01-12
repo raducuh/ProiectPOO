@@ -18,42 +18,45 @@ public class Client:Utilizator
                         Console.WriteLine($"ID: {eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}");
                 }
         }
-        private void InscriereLaEveniment(List<Event> evenimente)
+
+        public void InscriereLaEveniment(List<Event> evenimente)
         {
-        Console.Write("Introduceti numarul  evenimentului la care doresti sa participi: ");
-                if (int.TryParse(Console.ReadLine(), out int idEveniment))
+                ObtineEvenimenteDisponibile(evenimente);
+                Console.WriteLine("Introduceti numarul evenimentului la care doriti sa va inscrieti:");
+                if (!int.TryParse(Console.ReadLine(), out int evenimentIndex) || evenimentIndex < 1 || evenimentIndex > evenimente.Count)
                 {
-                        
-                        var evenimentAles = evenimente.FirstOrDefault(e => e.EventId == idEveniment);
-
-                        if (evenimentAles != null) 
-                        {
-                                if (evenimentAles.Participanti.Count < evenimentAles.Capacitate) // Verific daca mai sunt locuri disponibile
-                                {
-                                        // Adaug clientul la evenimentul respectiv
-                                        evenimentAles.Participanti.Add(this);
-                                        EvenimenteDisponibile.Add(evenimentAles); // Adaugam evenimentul la istoricul clientului
-                                        Console.WriteLine($"V-ati inscris cu succes la evenimentul \"{evenimentAles.Nume}\".");
-                                }
-                                else
-                                {
-                                        Console.WriteLine($"Evenimentul: \"{evenimentAles.Nume}\" a atins capacitatea maxima. Nu va puteti inscrie la eveniment..");
-                                }
-                        }
-                        else
-                        {
-                                Console.WriteLine("ID-ul introdus nu corespunde niciunui eveniment.");
-                        }
+                        Console.WriteLine("Numar eveniment invalid.");
+                        return;
                 }
-                else
+                
+                // caut evenimentul selectat
+                var eveniment = evenimente[evenimentIndex - 1];
+
+                if (eveniment == null)
                 {
-                        Console.WriteLine("ID-ul introdus este invalid.");
+                        Console.WriteLine("Evenimentul cu acest ID nu exista.");
+                        return;
                 }
+                if (eveniment.Participanti.Contains(this)) // aici verific sa nu se inscrie de 2 ori la aceelasi eveniment
+                {
+                        Console.WriteLine($"Ati fost deja inscris la evenimentul '{eveniment.Nume}'!");
+                        return;
+                }
+                // verific daca mai sunt locuri disponibile
+                if (eveniment.Capacitate - eveniment.Participanti.Count <= 0)
+                {
+                        Console.WriteLine("Nu mai sunt locuri disponibile pentru acest eveniment.");
+                        return;
+                }
+                // adaug clientul in lista
+                eveniment.Participanti.Add(this);
+                Console.WriteLine($"V-ati inscris cu succes la evenimentul '{eveniment.Nume}'!Va multumim!");
 
-                //return evenimente;
+                // actualizez capacitatea 
+                Console.WriteLine($"Locuri ramase: {eveniment.Capacitate - eveniment.Participanti.Count}");
+
         }
-        
-        
+  
         public override void Meniu()
         {
                 while (true)
@@ -72,7 +75,7 @@ public class Client:Utilizator
                                         ObtineEvenimente();
                                         break;
                                 case 2:
-                                        //InscriereLaEveniment(evenimente);
+                                        InscriereLaEveniment(EvenimenteDisponibile);
                                         break;
                                 case 3:
                                       
@@ -93,9 +96,5 @@ public class Client:Utilizator
         
         
         
-//o sa iti las aici comentariu, deci ar trebui sa faci cumva ca un Client sa poata sa isi aleaga la ce eveniment vrea sa mearga
-//pt ca mai tarziu trb sa aflam cate persoane merg la un anumit eveniment, de ex. e evenimentul: nunta chiriac, trb sa aflam 
-//cati clienti merg la nunta chiriac, la fel si pentru alt eveniment, etc.
-// ok 
 
         

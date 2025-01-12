@@ -75,7 +75,7 @@ namespace proiect
                                             client.ObtineEvenimenteDisponibile(logare.ListaUtilizatori.OfType<Organizator>().SelectMany(o => o.Evenimente).ToList());
                                             break;
                                         case 2:
-                                        
+                                            client.InscriereLaEveniment(logare.ListaUtilizatori.OfType<Organizator>().SelectMany(o => o.Evenimente).ToList());
                                             break;
                                         case 3:
                                       

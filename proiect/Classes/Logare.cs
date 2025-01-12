@@ -76,3 +76,4 @@ public class Logare
         return utilizatorCurent;
     }
 }
+ //obs: sa nu uitam sa tratam cazul in care pui spatiu la nume,prenume,etc
