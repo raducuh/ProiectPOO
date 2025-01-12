@@ -16,7 +16,14 @@ namespace proiect
                 Console.WriteLine("1. Logare");
                 Console.WriteLine("2. Autentificare (Adauga un utilizator nou)");
                 Console.WriteLine("3. Iesire");
-                int optiune = Convert.ToInt32(Console.ReadLine());
+                int optiune;
+                while (!int.TryParse(Console.ReadLine(), out optiune) || (optiune != 1 && optiune != 2 && optiune != 3))
+                {
+                    Console.WriteLine("OPTIUNE INVALIDA!");
+                    Console.WriteLine("1. Logare");
+                    Console.WriteLine("2. Autentificare (Adauga un utilizator nou)");
+                    Console.WriteLine("3. Iesire");
+                }
 
                 switch (optiune)
                 {

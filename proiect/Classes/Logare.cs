@@ -32,23 +32,35 @@ public class Logare
         }
     }
 
+    private string CitesteInputValid(string mesaj)
+    {
+        string input;
+        while (true)
+        {
+            Console.WriteLine(mesaj);
+            input = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                break;
+            }
+            Console.WriteLine("Inputul nu poate fi gol sau format doar din spații. Vă rugăm să încercați din nou.");
+        }
+        return input;
+    }
     public void Autentificare()
     {
         Console.WriteLine("Alege tipul de utilizator (1 - Organizator, 2 - Client): ");
-        int tipUtilizator = Convert.ToInt32(Console.ReadLine());
-        
-        Console.WriteLine("Introduceti numele: ");
-        string nume = Console.ReadLine();
-        
-        Console.WriteLine("Introduceti prenumele: ");
-        string prenume = Console.ReadLine();
-        
-        Console.WriteLine("Introduceti emailul: ");
-        string email = Console.ReadLine();
-        
-        Console.WriteLine("Introduceti parola: ");
-        string parola = Console.ReadLine();
-        
+        int tipUtilizator;
+        while (!int.TryParse(Console.ReadLine(), out tipUtilizator) || (tipUtilizator != 1 && tipUtilizator != 2))
+        {
+            Console.WriteLine("Alegeti o optiune valida: 1 (Organizator) sau 2 (Client).");
+        }
+
+        string nume = CitesteInputValid("Introduceti numele: ");
+        string prenume = CitesteInputValid("Introduceti prenumele: ");
+        string email = CitesteInputValid("Introduceti emailul: ");
+        string parola = CitesteInputValid("Introduceti parola: ");
+
         if (tipUtilizator == 1)
         {
             Organizator organizatorNou = new Organizator(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
