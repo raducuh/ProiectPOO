@@ -62,6 +62,19 @@ public class Client:Utilizator
         public void VizualizareIstoric()
         {
                 Console.WriteLine("Istoricul participarii dumneavoastra la evenimentele organizate:");
+                if (IstoricEvenimente.Count == 0)
+                {
+                        Console.WriteLine("Nu ati participat pana acum la niciun eveniment.");
+                        
+                }
+                else
+                {
+                        foreach (var eveniment in IstoricEvenimente)
+                        
+                        {
+                            Console.WriteLine($"Evenimentul {eveniment.Nume} din data {eveniment.Data}");    
+                        }
+                }
         }
   
         public override void Meniu()
@@ -85,7 +98,7 @@ public class Client:Utilizator
                                         InscriereLaEveniment(EvenimenteDisponibile);
                                         break;
                                 case 3:
-                                      
+                                      VizualizareIstoric();
                                         break;
                                 case 4:
                                         return;
