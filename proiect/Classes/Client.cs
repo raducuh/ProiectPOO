@@ -10,14 +10,13 @@ public class Client:Utilizator
         }
 
 
-        public override List<Event> ObtineEvenimente(List<Event> evenimente) //aici vede clientul evenimentele disponibile
+        public override void ObtineEvenimente() //aici vede clientul evenimentele disponibile
         {
                 Console.WriteLine("Evenimente disponibile pentru client:");
-                foreach (var eveniment in evenimente)
+                foreach (var eveniment in Evenimente)
                 {
                         Console.WriteLine($"ID:{eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}");
                 }
-                return evenimente;
         }
         private void InscriereLaEveniment(List<Event> evenimente)
         {
@@ -70,7 +69,7 @@ public class Client:Utilizator
                         switch (optiune)
                         {
                                 case 1:
-                                        
+                                        ObtineEvenimente();
                                         break;
                                 case 2:
                                         //InscriereLaEveniment(evenimente);

@@ -4,7 +4,6 @@ namespace DefaultNamespace;
 
 public class Organizator:Utilizator
 {
-    public List<Event> Evenimente { get; set; }
     public List<Review> Reviews { get; set; }
     public List<Client> Clients { get; set; }
     private int eventID => Evenimente.Count + 1;
@@ -94,14 +93,13 @@ public class Organizator:Utilizator
 
     
     
-    public override List<Event> ObtineEvenimente(List<Event> evenimente)
+    public override void ObtineEvenimente()
     {
         Console.WriteLine("Evenimente disponibile pentru organizator:");
-        foreach (var eveniment in evenimente)
+        foreach (var eveniment in Evenimente)
         {
             Console.WriteLine($"ID: {eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}, Locuri rămase: {eveniment.Capacitate - eveniment.Participanti.Count}");
         }
-        return evenimente;
     }
     
     
@@ -205,7 +203,7 @@ public class Organizator:Utilizator
                     LansareEveniment();
                     break;
                 case 2:
-                    ObtineEvenimente(Evenimente);
+                    ObtineEvenimente();
                     break;
                 case 3:
                     VerificareReviews();
