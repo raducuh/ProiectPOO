@@ -6,16 +6,15 @@ public class Client:Utilizator
         public Client(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume, email,
                 parola)
         {
-                EvenimenteDisponibile = new List<Event>();
         }
 
 
-        public override void ObtineEvenimente() //aici vede clientul evenimentele disponibile
+        public void ObtineEvenimenteDisponibile(List<Event> evenimente) // Aici primesti lista de evenimente
         {
                 Console.WriteLine("Evenimente disponibile pentru client:");
-                foreach (var eveniment in Evenimente)
+                foreach (var eveniment in evenimente)
                 {
-                        Console.WriteLine($"ID:{eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}");
+                        Console.WriteLine($"ID: {eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}");
                 }
         }
         private void InscriereLaEveniment(List<Event> evenimente)
@@ -49,8 +48,7 @@ public class Client:Utilizator
                 {
                         Console.WriteLine("ID-ul introdus este invalid.");
                 }
-
-                //return evenimente;
+                
         }
         
         
@@ -61,23 +59,28 @@ public class Client:Utilizator
                         Console.WriteLine("Meniul  clientului:");
                         Console.WriteLine("1. Vizualizare evenimente.");
                         Console.WriteLine("2. Inscriere la eveniment.");
-                        Console.WriteLine("3 Istoricul participarii dumneavoastra la evenimentele noastre.");
-                        Console.WriteLine("4.Acordarea unui review.");
-                        Console.WriteLine("5.Verificare update evenimente.");
+                        Console.WriteLine("3. Istoricul participarii dumneavoastra la evenimentele noastre.");
+                        Console.WriteLine("4. Acordarea unui review.");
+                        Console.WriteLine("5. Verificare update evenimente.");
+                        Console.WriteLine("6. Iesire");
                         int optiune = Convert.ToInt32(Console.ReadLine());
 
                         switch (optiune)
                         {
                                 case 1:
-                                        ObtineEvenimente();
+                                        ObtineEvenimenteDisponibile(Evenimente);
                                         break;
                                 case 2:
-                                        //InscriereLaEveniment(evenimente);
+                                        
                                         break;
                                 case 3:
                                       
                                         break;
                                 case 4:
+                                        break;
+                                case 5:
+                                        break;
+                                case 6:
                                         return;
                         }
                 }
