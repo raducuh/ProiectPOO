@@ -8,7 +8,7 @@ public class Utilizator
     public string Email { get;private set; }
     public string Parola { get;private set; }
     public List<Utilizator> Useri { get;private set; }
-    public List<Event> Evenimente { get; set; } = new List<Event>();
+    public List<Event> Evenimente { get; set; }
     
     public Utilizator(int id, string nume, string prenume, string email, string parola)
     {
@@ -18,6 +18,7 @@ public class Utilizator
         Email = email;
         Parola= parola;
         Useri = new List<Utilizator>();
+        Evenimente=new List<Event>();
     }
 
   
@@ -27,7 +28,7 @@ public class Utilizator
         
     }
     
-    public  void ObtineEvenimente()
+    public virtual void ObtineEvenimente()
     {
         
     }

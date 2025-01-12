@@ -10,6 +10,7 @@ public class Organizator:Utilizator
     public Organizator(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume,
         email, parola)
     {
+        Evenimente = new List<Event>();
         Reviews = new List<Review>();
         Clients = new List<Client>();
     }
@@ -92,7 +93,7 @@ public class Organizator:Utilizator
 
     
     
-    public void ObtineEvenimente()
+    public override void ObtineEvenimente()
     {
         Console.WriteLine("Evenimente disponibile pentru organizator:");
         foreach (var eveniment in Evenimente)

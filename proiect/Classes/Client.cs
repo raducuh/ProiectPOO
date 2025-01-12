@@ -6,6 +6,7 @@ public class Client:Utilizator
         public Client(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume, email,
                 parola)
         {
+                EvenimenteDisponibile = new List<Event>();
         }
 
 
@@ -48,7 +49,8 @@ public class Client:Utilizator
                 {
                         Console.WriteLine("ID-ul introdus este invalid.");
                 }
-                
+
+                //return evenimente;
         }
         
         
@@ -59,28 +61,23 @@ public class Client:Utilizator
                         Console.WriteLine("Meniul  clientului:");
                         Console.WriteLine("1. Vizualizare evenimente.");
                         Console.WriteLine("2. Inscriere la eveniment.");
-                        Console.WriteLine("3. Istoricul participarii dumneavoastra la evenimentele noastre.");
-                        Console.WriteLine("4. Acordarea unui review.");
-                        Console.WriteLine("5. Verificare update evenimente.");
-                        Console.WriteLine("6. Iesire");
+                        Console.WriteLine("3 Istoricul participarii dumneavoastra la evenimentele noastre.");
+                        Console.WriteLine("4.Acordarea unui review.");
+                        Console.WriteLine("5.Verificare update evenimente.");
                         int optiune = Convert.ToInt32(Console.ReadLine());
 
                         switch (optiune)
                         {
                                 case 1:
-                                        ObtineEvenimenteDisponibile(Evenimente);
+                                        ObtineEvenimente();
                                         break;
                                 case 2:
-                                        
+                                        //InscriereLaEveniment(evenimente);
                                         break;
                                 case 3:
                                       
                                         break;
                                 case 4:
-                                        break;
-                                case 5:
-                                        break;
-                                case 6:
                                         return;
                         }
                 }
