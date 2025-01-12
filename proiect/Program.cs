@@ -13,16 +13,17 @@ namespace proiect
 
             while (true)
             {
-                Console.WriteLine("1. Logare");
-                Console.WriteLine("2. Autentificare (Adauga un utilizator nou)");
-                Console.WriteLine("3. Iesire");
+                Console.WriteLine("\n\t\t\tBINE AI VENIT!\n");
+                Console.WriteLine("\t1. Logare");
+                Console.WriteLine("\t2. Autentificare (Adauga un utilizator nou)");
+                Console.WriteLine("\t3. Iesire\n");
                 int optiune;
                 while (!int.TryParse(Console.ReadLine(), out optiune) || (optiune != 1 && optiune != 2 && optiune != 3))
                 {
                     Console.WriteLine("OPTIUNE INVALIDA!");
-                    Console.WriteLine("1. Logare");
-                    Console.WriteLine("2. Autentificare (Adauga un utilizator nou)");
-                    Console.WriteLine("3. Iesire");
+                    Console.WriteLine("\t1. Logare");
+                    Console.WriteLine("\t2. Autentificare (Adauga un utilizator nou)");
+                    Console.WriteLine("\t3. Iesire");
                 }
 
                 switch (optiune)
@@ -37,11 +38,12 @@ namespace proiect
                                 while (!iesireMeniu)
                                 {
                                     
-                                    Console.WriteLine("Meniu Organizator:");
-                                    Console.WriteLine("1. Lansare Eveniment");
-                                    Console.WriteLine("2. Afisare Evenimente");
-                                    Console.WriteLine("3. Verificare Review-uri");
-                                    Console.WriteLine("4. Iesire");
+                                    Console.WriteLine("\t\tMeniu Organizator:");
+                                    Console.WriteLine("\t1. Lansare Eveniment");
+                                    Console.WriteLine("\t2. Afiseaza evenimente/Salveaza in fisier.");
+                                    Console.WriteLine("\t3. Trimite update eveniment.");
+                                    Console.WriteLine("\t4. Afisare Reviews eveniment.");
+                                    Console.WriteLine("\t5. Iesire.");
                                     int optiune2 = Convert.ToInt32(Console.ReadLine());
 
                                     switch (optiune2)
@@ -51,11 +53,15 @@ namespace proiect
                                             break;
                                         case 2:
                                             organizator.ObtineEvenimente();
+                                            organizator.SalvareEvenimenteInFisier();
                                             break;
                                         case 3:
-                                            organizator.VerificareReviews();
+                                            organizator.DetaliiEvenimentUpdate();
                                             break;
                                         case 4:
+                                            organizator.VerificareReviews();
+                                            break;
+                                        case 5:
                                             iesireMeniu = true; 
                                             break;
                                     }
@@ -67,13 +73,13 @@ namespace proiect
                                 while (!iesireMeniu)
                                 {
                                     
-                                    Console.WriteLine("Meniul  clientului:");
-                                    Console.WriteLine("1. Vizualizare evenimente.");
-                                    Console.WriteLine("2. Inscriere la eveniment.");
-                                    Console.WriteLine("3. Istoricul participarii dumneavoastra la evenimentele noastre.");
-                                    Console.WriteLine("4. Acordarea unui review.");
-                                    Console.WriteLine("5. Verificare update evenimente.");
-                                    Console.WriteLine("6. Iesire");
+                                    Console.WriteLine("\t\tMeniul  clientului:");
+                                    Console.WriteLine("\t1. Vizualizare evenimente.");
+                                    Console.WriteLine("\t2. Inscriere la eveniment.");
+                                    Console.WriteLine("\t3. Istoricul participarii dumneavoastra la evenimentele noastre.");
+                                    Console.WriteLine("\t4. Acordarea unui review.");
+                                    Console.WriteLine("\t5. Verificare update evenimente.");
+                                    Console.WriteLine("\t6. Iesire");
                                     int optiune2 = Convert.ToInt32(Console.ReadLine());
 
                                     switch (optiune2)

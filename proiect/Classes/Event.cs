@@ -21,5 +21,15 @@ public class Event
         Participanti = new List<Utilizator>();
         Reviews = new List<Review>();
     }
+    
+    public override string ToString()
+    {
+        return $"ID Eveniment: {EventId}\n" +
+               $"Nume: {Nume}\n" +
+               $"Descriere: {Descriere}\n" +
+               $"Capacitate: {Capacitate}\n" +
+               $"Data: {Data:yyyy-MM-dd}\n" +
+               $"Participanti: {string.Join(", ", Participanti.Select(p => p.Nume))}\n";
+    }
 }
 

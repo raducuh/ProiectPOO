@@ -27,7 +27,7 @@ public class Logare
         }
         else
         {
-            Console.WriteLine("Email sau parola incorecte.");
+            Console.WriteLine("EMAIL sau PAROLA INCORECTE!");
             return false;
         }
     }
@@ -43,7 +43,7 @@ public class Logare
             {
                 break;
             }
-            Console.WriteLine("Inputul nu poate fi gol sau format doar din spații. Vă rugăm să încercați din nou.");
+            Console.WriteLine("Inputul nu poate fi gol sau format doar din spatii. Va rugam sa incercati din nou.");
         }
         return input;
     }
@@ -88,4 +88,3 @@ public class Logare
         return utilizatorCurent;
     }
 }
- //obs: sa nu uitam sa tratam cazul in care pui spatiu la nume,prenume,etc

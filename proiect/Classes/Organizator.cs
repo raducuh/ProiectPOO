@@ -145,20 +145,40 @@ public class Organizator:Utilizator
         Console.WriteLine("Introduceti detalii/update-uri pentru participanti:");
         string mesaj = Console.ReadLine();
 
-        foreach (var participant in eveniment.Participanti)
+        string directoryPath = Directory.GetCurrentDirectory();
+        string folderName = "FisiereText";
+        string folderPath = Path.Combine(directoryPath, folderName);
+
+        // Crearea directorului dacă nu există
+        if (!Directory.Exists(folderPath))
         {
-            Console.WriteLine($"Mesaj trimis catre {participant.Nume}: {mesaj}");
+            Directory.CreateDirectory(folderPath);
         }
 
-        Console.WriteLine($"Update-ul pentru evenimentul '{eveniment.Nume}' a fost trimis participantilor.");
+        string fileName = $"Update_Eveniment_{eveniment.EventId}.txt";
+        string filePath = Path.Combine(folderPath, fileName);
+
+        // Salvarea mesajului în fișier
+        using (StreamWriter writer = new StreamWriter(filePath, true)) // true pentru a adăuga la fișierul existent
+        {
+            writer.WriteLine($"Eveniment: {eveniment.Nume}");
+            writer.WriteLine($"Data: {DateTime.Now}");
+            writer.WriteLine($"Update trimis: {mesaj}");
+            writer.WriteLine("Participanti:");
+            foreach (var participant in eveniment.Participanti)
+            {
+                writer.WriteLine($"- {participant.Nume}");
+            }
+            writer.WriteLine(new string('-', 40)); // Separator
+        }
+
+        Console.WriteLine($"Update-ul pentru evenimentul '{eveniment.Nume}' a fost trimis participantilor si salvat in fisierul '{fileName}'.");
     }
 
     public void SalvareEvenimenteInFisier()
     {
         string directoryPath = Directory.GetCurrentDirectory();
-
         string folderName = "FisiereText";
-
         string folderPath = Path.Combine(directoryPath, folderName);
 
         if (!Directory.Exists(folderPath))
@@ -168,51 +188,15 @@ public class Organizator:Utilizator
 
         string path = Path.Combine(folderPath, "evenimente.txt");
 
-     
-        using (StreamWriter writer = new StreamWriter(path, false)) 
+        using (StreamWriter writer = new StreamWriter(path, false)) // false pentru a suprascrie fișierul
         {
             foreach (var eveniment in Evenimente)
             {
-                
-                writer.WriteLine($"Nume eveniment: {eveniment.Nume};\n\nDescriere eveniment: {eveniment.Descriere};\n\nCapacitate eveniment: {eveniment.Capacitate};\n\nData eveniment: {eveniment.Data.ToString("yyyy-MM-dd")};");
+                writer.WriteLine(eveniment.ToString());
+                writer.WriteLine(new string('-', 40)); // Separator între evenimente
             }
         }
 
         Console.WriteLine("Evenimentele au fost salvate in fisierul 'evenimente.txt'.");
     }
-
-
-    public void AddClient(Client client)
-    {
-        Clients.Add(client);
-    }
-    public override void Meniu()
-    {
-        while (true)
-        {
-            Console.WriteLine("Meniu Organizator:");
-            Console.WriteLine("1. Lansare Eveniment");
-            Console.WriteLine("2. Afisare Evenimente");
-            Console.WriteLine("3. Verificare Review-uri");
-            Console.WriteLine("4. Iesire");
-            int optiune = Convert.ToInt32(Console.ReadLine());
-
-            switch (optiune)
-            {
-                case 1:
-                    LansareEveniment();
-                    break;
-                case 2:
-                    ObtineEvenimente();
-                    break;
-                case 3:
-                    VerificareReviews();
-                    break;
-                case 4:
-                    return;
-            }
-        }
-    }
-   
-    
 }
