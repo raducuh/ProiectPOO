@@ -23,4 +23,3 @@ public class Event
     }
 }
 
-//Radu aici cred ca ar fi ok sa facem si lista de evenimente disponibile 

@@ -94,12 +94,14 @@ public class Organizator:Utilizator
 
     
     
-    public void AfisareEvenimente()
+    public override List<Event> ObtineEvenimente(List<Event> evenimente)
     {
-        foreach (var eveniment in Evenimente)
+        Console.WriteLine("Evenimente disponibile pentru organizator:");
+        foreach (var eveniment in evenimente)
         {
-            Console.WriteLine($"Nume eveniment:{eveniment.Nume}\n-------------\nTotal capacitate: {eveniment.Capacitate}\n-------------\nTotal participanti:{eveniment.Participanti.Count}");
+            Console.WriteLine($"ID: {eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}, Locuri rămase: {eveniment.Capacitate - eveniment.Participanti.Count}");
         }
+        return evenimente;
     }
     
     
@@ -203,7 +205,7 @@ public class Organizator:Utilizator
                     LansareEveniment();
                     break;
                 case 2:
-                    AfisareEvenimente();
+                    ObtineEvenimente(Evenimente);
                     break;
                 case 3:
                     VerificareReviews();
@@ -213,9 +215,6 @@ public class Organizator:Utilizator
             }
         }
     }
-    public override void AddUtilizator(Utilizator utilizator)
-    {
-        
-    }
+   
     
 }

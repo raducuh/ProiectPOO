@@ -19,14 +19,16 @@ public class Utilizator
         Useri = new List<Utilizator>();
     }
 
-    public virtual void AddUtilizator(Utilizator utilizator)
-    {
-        
-    }
+  
 
     public virtual void Meniu()
     {
         
+    }
+    
+    public virtual List<Event> ObtineEvenimente(List<Event> evenimente)
+    {
+        return evenimente;
     }
 
  
