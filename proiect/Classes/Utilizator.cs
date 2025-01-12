@@ -7,6 +7,7 @@ public class Utilizator
     public string Prenume { get;private set; }
     public string Email { get;private set; }
     public string Parola { get;private set; }
+    public List<Utilizator> Useri { get;private set; }
     
     public Utilizator(int id, string nume, string prenume, string email, string parola)
     {
@@ -15,6 +16,12 @@ public class Utilizator
         Prenume = prenume;
         Email = email;
         Parola= parola;
+        Useri = new List<Utilizator>();
+    }
+
+    public virtual void AddUtilizator(Utilizator utilizator)
+    {
+        
     }
 
  
