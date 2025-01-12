@@ -22,3 +22,5 @@ public class Event
         Reviews = new List<Review>();
     }
 }
+
+//Radu aici cred ca ar fi ok sa facem si lista de evenimente disponibile 
