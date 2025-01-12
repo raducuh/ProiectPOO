@@ -149,7 +149,7 @@ public class Organizator:Utilizator
         string folderName = "FisiereText";
         string folderPath = Path.Combine(directoryPath, folderName);
 
-        // Crearea directorului dacă nu există
+        
         if (!Directory.Exists(folderPath))
         {
             Directory.CreateDirectory(folderPath);
@@ -158,8 +158,8 @@ public class Organizator:Utilizator
         string fileName = $"Update_Eveniment_{eveniment.EventId}.txt";
         string filePath = Path.Combine(folderPath, fileName);
 
-        // Salvarea mesajului în fișier
-        using (StreamWriter writer = new StreamWriter(filePath, true)) // true pentru a adăuga la fișierul existent
+       
+        using (StreamWriter writer = new StreamWriter(filePath, true)) 
         {
             writer.WriteLine($"Eveniment: {eveniment.Nume}");
             writer.WriteLine($"Data: {DateTime.Now}");
@@ -169,7 +169,7 @@ public class Organizator:Utilizator
             {
                 writer.WriteLine($"- {participant.Nume}");
             }
-            writer.WriteLine(new string('-', 40)); // Separator
+            writer.WriteLine(new string('-', 40)); 
         }
 
         Console.WriteLine($"Update-ul pentru evenimentul '{eveniment.Nume}' a fost trimis participantilor si salvat in fisierul '{fileName}'.");
@@ -188,12 +188,12 @@ public class Organizator:Utilizator
 
         string path = Path.Combine(folderPath, "evenimente.txt");
 
-        using (StreamWriter writer = new StreamWriter(path, false)) // false pentru a suprascrie fișierul
+        using (StreamWriter writer = new StreamWriter(path, false)) 
         {
             foreach (var eveniment in Evenimente)
             {
                 writer.WriteLine(eveniment.ToString());
-                writer.WriteLine(new string('-', 40)); // Separator între evenimente
+                writer.WriteLine(new string('-', 40)); 
             }
         }
 
