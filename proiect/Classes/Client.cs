@@ -3,10 +3,12 @@
 public class Client:Utilizator
 {
         public List<Event> EvenimenteDisponibile { get; private set; }
+        public List<Event> IstoricEvenimente { get;private set; }
         public Client(int id, string nume, string prenume, string email, string parola) : base(id, nume, prenume, email,
                 parola)
         {
                 EvenimenteDisponibile = new List<Event>();
+                IstoricEvenimente= new List<Event>();
         }
 
 
@@ -55,6 +57,11 @@ public class Client:Utilizator
                 // actualizez capacitatea 
                 Console.WriteLine($"Locuri ramase: {eveniment.Capacitate - eveniment.Participanti.Count}");
 
+        }
+
+        public void VizualizareIstoric()
+        {
+                Console.WriteLine("Istoricul participarii dumneavoastra la evenimentele organizate:");
         }
   
         public override void Meniu()

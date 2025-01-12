@@ -9,7 +9,7 @@ public class Logare
     {
         ListaUtilizatori = new List<Utilizator>();
     }
-
+ 
     public bool AutentificareUtilizator()
     {
         Console.WriteLine("Introduceti emailul: ");

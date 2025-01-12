@@ -78,7 +78,6 @@ namespace proiect
                                             client.InscriereLaEveniment(logare.ListaUtilizatori.OfType<Organizator>().SelectMany(o => o.Evenimente).ToList());
                                             break;
                                         case 3:
-                                      
                                             break;
                                         case 4:
                                             break;
