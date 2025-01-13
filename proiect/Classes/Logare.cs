@@ -99,16 +99,6 @@ public class Logare
             Console.WriteLine("Client adaugat cu succes!");
         }
     }
-
-    public void AfisareUtilizatori()
-    {
-        foreach (Utilizator utilizator1 in ListaUtilizatori)
-        {
-            Console.WriteLine($"{utilizator1.Nume}, {utilizator1.Prenume}, {utilizator1.Email}");
-        }
-    }
-  
-
     public Utilizator GetUtilizatorCurent()
     {
         return utilizatorCurent;
