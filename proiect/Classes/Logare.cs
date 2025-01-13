@@ -27,12 +27,16 @@ public class Logare
         
         if (utilizatorCurent != null)
         {
-            Console.WriteLine("Autentificare reusita!");
+            Console.ForegroundColor = ConsoleColor.Green; 
+            Console.WriteLine(" Autentificare reusita!");
+            Console.ResetColor();
             return true;
         }
         else
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("EMAIL sau PAROLA INCORECTE!");
+            Console.ResetColor();
             return false;
         }
     }
@@ -58,7 +62,9 @@ public class Logare
         int tipUtilizator;
         while (!int.TryParse(Console.ReadLine(), out tipUtilizator) || (tipUtilizator != 1 && tipUtilizator != 2))
         {
-            Console.WriteLine("Alegeti o optiune valida: 1 (Organizator) sau 2 (Client).");
+            Console.ForegroundColor = ConsoleColor.Red; 
+            Console.WriteLine("Optiune invalida! Alegeti 1 (Organizator) sau 2 (Client).");
+            Console.ResetColor();
         }
 
         string nume = CitesteInputValid("Introduceti numele: ");
@@ -83,20 +89,26 @@ public class Logare
 
         if (ListaUtilizatori.Any(u => u.Email == email))
         {
-            Console.WriteLine($"Adresa de email {email} este deja utilizata! Va rugam a folositi o alta adresa sau sa va autentificati.");
+            Console.ForegroundColor = ConsoleColor.Red; // Mesaj de eroare
+            Console.WriteLine($"Adresa de email {email} este deja utilizata! Va rugam sa folositi o alta adresa sau sa va autentificati.");
+            Console.ResetColor();
             return; // aici verific daca email-ul e deja luat
         }
         if (tipUtilizator == 1)
         {
             Organizator organizatorNou = new Organizator(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
             ListaUtilizatori.Add(organizatorNou);
+            Console.ForegroundColor = ConsoleColor.Green; 
             Console.WriteLine("Organizator adaugat cu succes!");
+            Console.ResetColor();
         }
         else if (tipUtilizator == 2)
         {
             Client clientNou = new Client(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
             ListaUtilizatori.Add(clientNou);
+            Console.ForegroundColor = ConsoleColor.Green; // Mesaj de succes
             Console.WriteLine("Client adaugat cu succes!");
+            Console.ResetColor();
         }
     }
     public Utilizator GetUtilizatorCurent()
