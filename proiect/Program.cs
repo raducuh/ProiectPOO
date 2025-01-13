@@ -44,7 +44,7 @@ namespace proiect
                                 bool iesireMeniu = false;
                                 while (!iesireMeniu)
                                 {
-                                    Console.WriteLine($"\t*Bine ai venit {organizator.Nume} {organizator.Prenume} !*");
+                                    Console.WriteLine($"\t*Utilizator conectat: {organizator.Nume} {organizator.Prenume}*");
                                     Console.WriteLine("\t\tMeniu Organizator:");
                                     Console.WriteLine("\t1. Lansare Eveniment");
                                     Console.WriteLine("\t2. Afiseaza evenimente/Salveaza in fisier.");
@@ -79,7 +79,7 @@ namespace proiect
                                 bool iesireMeniu = false;
                                 while (!iesireMeniu)
                                 {
-                                    Console.WriteLine($"\t*Bine ai venit {client.Nume} {client.Prenume} !*");
+                                    Console.WriteLine($"\t*Utilizator conectat: {client.Nume} {client.Prenume} *");
                                     Console.WriteLine("\t\tMeniul  clientului:");
                                     Console.WriteLine("\t1. Vizualizare evenimente.");
                                     Console.WriteLine("\t2. Inscriere la eveniment.");
