@@ -26,7 +26,7 @@ public class Logare
 
     public bool AutentificareUtilizator()
     {
-        Console.WriteLine("Introduceti emailul:(fara '@gmail.com', acesta se retine automat!" );
+        Console.WriteLine("Introduceti emailul:(fara '@gmail.com', acesta se retine automat!)" );
         string emailPrefix = Console.ReadLine();
         string email = emailPrefix+"@gmail.com";
         
@@ -65,7 +65,9 @@ public class Logare
             {
                 break;
             }
+            Console.ForegroundColor = ConsoleColor.Red; 
             Console.WriteLine("Inputul nu poate fi gol sau format doar din spatii. Va rugam sa incercati din nou.");
+            Console.ResetColor();
         }
         return input;
     }

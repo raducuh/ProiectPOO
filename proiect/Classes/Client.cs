@@ -27,7 +27,9 @@ public class Client:Utilizator
                 Console.WriteLine("Introduceti numarul evenimentului la care doriti sa va inscrieti:");
                 if (!int.TryParse(Console.ReadLine(), out int evenimentIndex) || evenimentIndex < 1 || evenimentIndex > evenimente.Count)
                 {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Numar eveniment invalid.");
+                        Console.ResetColor();
                         return;
                 }
                 
@@ -36,24 +38,32 @@ public class Client:Utilizator
 
                 if (eveniment == null)
                 {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Evenimentul cu acest ID nu exista.");
+                        Console.ResetColor();
                         return;
                 }
                 if (eveniment.Participanti.Contains(this)) // aici verific sa nu se inscrie de 2 ori la aceelasi eveniment
                 {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Ati fost deja inscris la evenimentul '{eveniment.Nume}'!");
+                        Console.ResetColor();
                         return;
                 }
                 // verific daca mai sunt locuri disponibile
                 if (eveniment.Capacitate - eveniment.Participanti.Count <= 0)
                 {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Nu mai sunt locuri disponibile pentru acest eveniment.");
+                        Console.ResetColor();
                         return;
                 }
                 // adaug clientul in lista
                 eveniment.Participanti.Add(this);
                 IstoricEvenimente.Add(eveniment);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"V-ati inscris cu succes la evenimentul '{eveniment.Nume}'!Va multumim!");
+                Console.ResetColor();
 
                 // actualizez capacitatea 
                 Console.WriteLine($"Locuri ramase: {eveniment.Capacitate - eveniment.Participanti.Count}");
@@ -95,7 +105,9 @@ public class Client:Utilizator
             Console.WriteLine("Introduceti numarul evenimentului la care doriti sa acordati review-ul:");
             if (!int.TryParse(Console.ReadLine(), out int evenimentIndex) || evenimentIndex < 1 || evenimentIndex > IstoricEvenimente.Count)
             {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Numar eveniment invalid.");
+                    Console.ResetColor();
                     return;
             }
 
@@ -107,8 +119,9 @@ public class Client:Utilizator
             evenimentSelectat.AdaugaReview(review);
     
             review.SalveazaReview();
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Review-ul pentru evenimentul '{evenimentSelectat.Nume}' a fost adaugat cu succes!");
+            Console.ResetColor();
     }
 
     public void VizualizareUpdate()

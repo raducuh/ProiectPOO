@@ -30,8 +30,9 @@ public class Review
             writer.WriteLine($"Data: {DateTime.Now}");
             writer.WriteLine(new string('-', 40));
         }
-
-        Console.WriteLine("Review-ul a fost salvat cu succes!");
+        
+        
+      
     }
     public void AcordareFeedback(Event eveniment)
     {
@@ -54,7 +55,9 @@ public class Review
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Numar invalid de stele! Introduceti un numar intre 1 si 5.");
+                Console.ResetColor();
             }
         }
 

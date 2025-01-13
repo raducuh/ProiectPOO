@@ -26,8 +26,9 @@ public class Organizator:Utilizator
             nume = Console.ReadLine();
             if (string.IsNullOrEmpty(nume) || nume[0]==' ')
             {
+                Console.ForegroundColor = ConsoleColor.Red; 
                 Console.WriteLine("Numele evenimentului nu poate sa nu aiba niciun caracter sau sa fie null!");
-                
+                Console.ResetColor();
             }
             else
             {
@@ -42,7 +43,9 @@ public class Organizator:Utilizator
             descriere = Console.ReadLine();
             if (string.IsNullOrEmpty(descriere) || descriere[0]==' ')
             {
+                Console.ForegroundColor = ConsoleColor.Red; 
                 Console.WriteLine("Descrierea evenimentului nu poate sa nu aiba niciun caracter sau sa fie null!");
+                Console.ResetColor();
             }
             else
             {
@@ -64,7 +67,9 @@ public class Organizator:Utilizator
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Valoarea introdusa nu este valida sau este mai mica decat 1. Incercati din nou.");
+                Console.ResetColor();
             }
         }
         DateTime data;
@@ -82,13 +87,17 @@ public class Organizator:Utilizator
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Data introdusa nu este valida. Incercati din nou.");
+                Console.ResetColor();
             }
         }
 
         Event nouEveniment = new Event(eventID,nume, descriere, capacitate, data);
         Evenimente.Add(nouEveniment);
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"Evenimentul '{nume}' a fost lansat cu succes!");
+        Console.ResetColor();
     }
 
     
@@ -117,14 +126,18 @@ public class Organizator:Utilizator
         Console.WriteLine("Introduceti ID-ul evenimentului pentru care doriti sa trimiteti un update:");
         if (!int.TryParse(Console.ReadLine(), out int eventId))
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("ID-ul trebuie sa fie un numar intreg.");
+            Console.ResetColor();
             return;
         }
 
         Event eveniment = Evenimente.FirstOrDefault(e => e.EventId == eventId);
         if (eveniment == null)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Evenimentul cu acest ID nu exista.");
+            Console.ResetColor();
             return;
         }
 
