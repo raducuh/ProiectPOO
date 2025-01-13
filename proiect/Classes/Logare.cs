@@ -5,16 +5,20 @@ public class Logare
 {
     public List<Utilizator> ListaUtilizatori { get; private set; }
     private Utilizator utilizatorCurent;
+   
+    private const string FisierUtilizatori = "utilizatori.txt";
 
     public Logare()
     {
         ListaUtilizatori = new List<Utilizator>();
+        IncarcaUtilizatoriDinFisier(); //retin toti utilizatorii
     }
  
     public bool AutentificareUtilizator()
     {
-        Console.WriteLine("Introduceti emailul: ");
-        string email = Console.ReadLine();
+        Console.WriteLine("Introduceti emailul:(fara '@gmail.com', acesta se retine automat!" );
+        string emailPrefix = Console.ReadLine();
+        string email = emailPrefix+"@gmail.com";
         
         Console.WriteLine("Introduceti parola: ");
         string parola = Console.ReadLine();
@@ -59,9 +63,15 @@ public class Logare
 
         string nume = CitesteInputValid("Introduceti numele: ");
         string prenume = CitesteInputValid("Introduceti prenumele: ");
-        string email = CitesteInputValid("Introduceti emailul: ");
+        string emailPrefix = CitesteInputValid("Introduceti emailul(doar partea dinainte de @gmail.com): ");
+        string email = emailPrefix + "@gmail.com";
         string parola = CitesteInputValid("Introduceti parola: ");
 
+        if (ListaUtilizatori.Any(u => u.Email == email))
+        {
+            Console.WriteLine($"Adresa de email {email} este deja utilizata! Va rugam a folositi o alta adresa sau sa va autentificati.");
+            return; // aici verific daca email-ul e deja luat
+        }
         if (tipUtilizator == 1)
         {
             Organizator organizatorNou = new Organizator(ListaUtilizatori.Count + 1, nume, prenume, email, parola);
@@ -81,6 +91,46 @@ public class Logare
         foreach (Utilizator utilizator1 in ListaUtilizatori)
         {
             Console.WriteLine($"{utilizator1.Nume}, {utilizator1.Prenume}, {utilizator1.Email}");
+        }
+    }
+    private void SalveazaUtilizatoriInFisier()
+    {
+        using (StreamWriter writer = new StreamWriter(FisierUtilizatori))
+        {
+            foreach (var utilizator in ListaUtilizatori)
+            {
+                writer.WriteLine($"{utilizator.Id};{utilizator.Nume};{utilizator.Prenume};{utilizator.Email};{utilizator.Parola}");
+            }
+        }
+    }
+    private void IncarcaUtilizatoriDinFisier()
+    {
+        if (!File.Exists(FisierUtilizatori))
+            return;
+
+        foreach (var linie in File.ReadAllLines(FisierUtilizatori))
+        {
+            var date = linie.Split(';');
+            if (date.Length == 5)
+            {
+                int id = int.Parse(date[0]);
+                string nume = date[1];
+                string prenume = date[2];
+                string email = date[3];
+                string parola = date[4];
+
+                Utilizator utilizatorNou;
+                if (email.Contains("organizator"))
+                {
+                    utilizatorNou = new Organizator(id, nume, prenume, email, parola);
+                }
+                else
+                {
+                    utilizatorNou = new Client(id, nume, prenume, email, parola);
+                }
+
+                ListaUtilizatori.Add(utilizatorNou);
+            }
         }
     }
 
