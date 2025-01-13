@@ -20,14 +20,6 @@ public class Utilizator
         Useri = new List<Utilizator>();
         Evenimente=new List<Event>();
     }
-
-  
-
-    public virtual void Meniu()
-    {
-        
-    }
-    
     public virtual void ObtineEvenimente()
     {
         

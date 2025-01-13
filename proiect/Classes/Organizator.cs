@@ -24,7 +24,7 @@ public class Organizator:Utilizator
         {
             Console.WriteLine("Introduceti un nume de eveniment: ");
             nume = Console.ReadLine();
-            if (string.IsNullOrEmpty(nume))
+            if (string.IsNullOrEmpty(nume) || nume[0]==' ')
             {
                 Console.WriteLine("Numele evenimentului nu poate sa nu aiba niciun caracter sau sa fie null!");
                 
@@ -40,7 +40,7 @@ public class Organizator:Utilizator
         {
             Console.WriteLine("Introduceti descrierea evenimentului: ");
             descriere = Console.ReadLine();
-            if (string.IsNullOrEmpty(descriere))
+            if (string.IsNullOrEmpty(descriere) || descriere[0]==' ')
             {
                 Console.WriteLine("Descrierea evenimentului nu poate sa nu aiba niciun caracter sau sa fie null!");
             }
