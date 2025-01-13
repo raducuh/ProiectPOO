@@ -16,10 +16,10 @@ public class Logare
     public void FunctieSpeciala()
     {
         Console.Write("Va rugam sa asteptati");
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             Console.Write(".");
-            System.Threading.Thread.Sleep(500); // Pauză între puncte
+            System.Threading.Thread.Sleep(500); 
         }
       
     }
