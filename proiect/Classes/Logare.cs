@@ -5,11 +5,13 @@ public class Logare
 {
     public List<Utilizator> ListaUtilizatori { get; private set; }
     private Utilizator utilizatorCurent;
+    private List<string> emailuri;
+    
     
     public Logare()
     {
         ListaUtilizatori = new List<Utilizator>();
-      
+        emailuri = new List<string>();
     }
  
     public bool AutentificareUtilizator()
@@ -61,7 +63,21 @@ public class Logare
 
         string nume = CitesteInputValid("Introduceti numele: ");
         string prenume = CitesteInputValid("Introduceti prenumele: ");
-        string emailPrefix = CitesteInputValid("Introduceti emailul(doar partea dinainte de @gmail.com): ");
+        string emailPrefix;
+        while (true)
+        {
+            emailPrefix = CitesteInputValid("Introduceti emailul(doar partea dinainte de @gmail.com): ");
+            if (emailuri.Contains(emailPrefix))
+            {
+                Console.WriteLine($"Emailul: {emailPrefix}@gmail.com este deja utilizat! Introduceti alt email! (fara gmail.com) ");
+            }
+            else
+            {
+                emailuri.Add(emailPrefix);
+                break;
+            }
+        }
+
         string email = emailPrefix + "@gmail.com";
         string parola = CitesteInputValid("Introduceti parola: ");
 
