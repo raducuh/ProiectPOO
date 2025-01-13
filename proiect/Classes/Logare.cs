@@ -13,7 +13,17 @@ public class Logare
         ListaUtilizatori = new List<Utilizator>();
         emailuri = new List<string>();
     }
- 
+    public void FunctieSpeciala()
+    {
+        Console.Write("Va rugam sa asteptati");
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write(".");
+            System.Threading.Thread.Sleep(500); // Pauză între puncte
+        }
+      
+    }
+
     public bool AutentificareUtilizator()
     {
         Console.WriteLine("Introduceti emailul:(fara '@gmail.com', acesta se retine automat!" );
@@ -23,12 +33,15 @@ public class Logare
         Console.WriteLine("Introduceti parola: ");
         string parola = Console.ReadLine();
         
+        
+        
         utilizatorCurent = ListaUtilizatori.FirstOrDefault(u => u.Email == email && u.Parola == parola);
         
         if (utilizatorCurent != null)
         {
+           FunctieSpeciala();
             Console.ForegroundColor = ConsoleColor.Green; 
-            Console.WriteLine(" Autentificare reusita!");
+            Console.WriteLine("\nAutentificare reusita!");
             Console.ResetColor();
             return true;
         }
@@ -75,7 +88,9 @@ public class Logare
             emailPrefix = CitesteInputValid("Introduceti emailul(doar partea dinainte de @gmail.com): ");
             if (emailuri.Contains(emailPrefix))
             {
+                Console.ForegroundColor = ConsoleColor.Red; 
                 Console.WriteLine($"Emailul: {emailPrefix}@gmail.com este deja utilizat! Introduceti alt email! (fara gmail.com) ");
+                Console.ResetColor();
             }
             else
             {

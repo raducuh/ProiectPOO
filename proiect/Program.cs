@@ -12,8 +12,15 @@ namespace proiect
             Logare logare = new Logare();
 
             while (true)
-            {
-                Console.WriteLine("\n\t\t\tBINE AI VENIT!\n");
+            { 
+              
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("\t=========================================");
+                Console.WriteLine("\t              R & A EVENTS              ");
+                Console.WriteLine("\t=========================================");
+                Console.ResetColor();
+                Console.WriteLine("\n\t\t      BINE AI VENIT!\n");
+                Console.WriteLine("\n\tVa rugam introduceti optiunea dorita:");
                 Console.WriteLine("\t1. Logare");
                 Console.WriteLine("\t2. Autentificare (Adauga un utilizator nou)");
                 Console.WriteLine("\t3. Iesire\n");
