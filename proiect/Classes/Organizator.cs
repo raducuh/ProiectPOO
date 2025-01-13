@@ -96,9 +96,10 @@ public class Organizator:Utilizator
     public override void ObtineEvenimente()
     {
         Console.WriteLine("Evenimente disponibile pentru organizator:");
+        Console.WriteLine("--------------------");
         foreach (var eveniment in Evenimente)
         {
-            Console.WriteLine($"ID: {eveniment.EventId}, Nume: {eveniment.Nume}, Data: {eveniment.Data}, Locuri rămase: {eveniment.Capacitate - eveniment.Participanti.Count}");
+            Console.WriteLine($"ID: {eveniment.EventId}\n--------------------\nNume: {eveniment.Nume}\n-------------------- \nData: {eveniment.Data}\n--------------------\nLocuri totale: {eveniment.Capacitate}\n--------------------\nLocuri ramase: {eveniment.Capacitate - eveniment.Participanti.Count}");
         }
     }
     
