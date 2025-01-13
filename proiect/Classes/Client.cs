@@ -110,7 +110,44 @@ public class Client:Utilizator
 
             Console.WriteLine($"Review-ul pentru evenimentul '{evenimentSelectat.Nume}' a fost adaugat cu succes!");
     }
-  
+
+    public void VizualizareUpdate()
+    {
+            Console.WriteLine("Update-urile pentru evenimentele la care participati:");
+            if (IstoricEvenimente.Count == 0)
+            {
+                    Console.WriteLine("Nu aveti evenimente in istoric pentru a vizualiza update-uri");
+                    return;
+            }
+
+            string directoryPath = Directory.GetCurrentDirectory();
+            string numefisier = "FisiereText";
+            string folderPath = Path.Combine(directoryPath, numefisier);
+            if (!Directory.Exists(folderPath))
+            {
+                    Console.WriteLine("Nu exista niciun update salvat momentan.");
+                    return;
+            }
+            foreach (var eveniment in IstoricEvenimente)
+            {
+                    string fileName = ($"Update_Eveniment_{eveniment.EventId}.txt");
+                    string filePath = Path.Combine(folderPath, fileName);
+
+                    if (File.Exists(filePath))
+                    {
+                            Console.WriteLine($"\nUpdate-uri pentru evenimentul '{eveniment.Nume}':");
+                            string[] lines = File.ReadAllLines(filePath);
+                            foreach (var line in lines)
+                            {
+                                    Console.WriteLine(line);
+                            }
+                    }
+                    else
+                    {
+                            Console.WriteLine($"\nNu exista update-uri pentru evenimentul '{eveniment.Nume}'.");
+                    }
+            }
+    }
 }
 
         

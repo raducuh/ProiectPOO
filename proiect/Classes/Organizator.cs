@@ -151,7 +151,7 @@ public class Organizator:Utilizator
             writer.WriteLine($"Eveniment: {eveniment.Nume}");
             writer.WriteLine($"Data: {DateTime.Now}");
             writer.WriteLine($"Update trimis: {mesaj}");
-            writer.WriteLine("Participanti:");
+          
             foreach (var participant in eveniment.Participanti)
             {
                 writer.WriteLine($"- {participant.Nume}");

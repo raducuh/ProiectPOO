@@ -96,7 +96,7 @@ namespace proiect
                                         case 4:
                                             client.AcordaReview();
                                             break;
-                                        case 5:
+                                        case 5:client.VizualizareUpdate();
                                             break;
                                         case 6:
                                             iesireMeniu = true;
