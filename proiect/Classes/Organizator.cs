@@ -107,23 +107,9 @@ public class Organizator:Utilizator
     {
         foreach (var eveniment in Evenimente)
         {
-            Console.WriteLine($"Eveniment: {eveniment.Nume}");
-            if (eveniment.Reviews.Any())
-            {
-                foreach (var review in eveniment.Reviews)
-                {
-                    Console.WriteLine($"Review de la {review.Persoana.Nume}: {review.NumarStele} stele");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Nu exista review-uri pentru acest eveniment.");
-            }
-            Console.WriteLine("-------------------------");
+            eveniment.VizualizeazaReviewuri();
         }
     }
-
-
 
     public void DetaliiEvenimentUpdate()
     {

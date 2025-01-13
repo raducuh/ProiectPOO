@@ -94,6 +94,7 @@ namespace proiect
                                             client.VizualizareIstoric();
                                             break;
                                         case 4:
+                                            client.AcordaReview();
                                             break;
                                         case 5:
                                             break;

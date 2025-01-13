@@ -52,6 +52,7 @@ public class Client:Utilizator
                 }
                 // adaug clientul in lista
                 eveniment.Participanti.Add(this);
+                IstoricEvenimente.Add(eveniment);
                 Console.WriteLine($"V-ati inscris cu succes la evenimentul '{eveniment.Nume}'!Va multumim!");
 
                 // actualizez capacitatea 
@@ -77,25 +78,7 @@ public class Client:Utilizator
                 }
         }
 
-    /*    public void VizualizareIstoric()
-        {
-                Console.WriteLine("Istoricul participarii dumneavoastra la evenimentele organizate:");
-                if (IstoricEvenimente.Count == 0)
-                {
-                        Console.WriteLine("Nu ati participat pana acum la niciun eveniment.");
-                        
-                }
-                else
-                {
-                        foreach (var eveniment in IstoricEvenimente)
-                        
-                        {
-                            Console.WriteLine($"Evenimentul {eveniment.Nume} din data {eveniment.Data}");    
-                        }
-                }
-        }*/
-    
-   /* public void AcordaReview()
+    public void AcordaReview()
     {
             if (IstoricEvenimente.Count == 0)
             {
@@ -117,51 +100,17 @@ public class Client:Utilizator
             }
 
             var evenimentSelectat = IstoricEvenimente[evenimentIndex - 1];
-
-            // Creare obiect Review si acordare feedback
-            Review review = new Review(this, 0);  // 0 va fi înlocuit cu numărul de stele mai jos
+            
+            Review review = new Review(this, 0);  
             review.AcordareFeedback(evenimentSelectat);
 
-            // Adaug review-ul la eveniment
             evenimentSelectat.AdaugaReview(review);
+    
+            review.SalveazaReview();
+
             Console.WriteLine($"Review-ul pentru evenimentul '{evenimentSelectat.Nume}' a fost adaugat cu succes!");
     }
-    */
   
-        public override void Meniu()
-        {
-                while (true)
-                {
-                        Console.WriteLine("Meniul  clientului:");
-                        Console.WriteLine("1. Vizualizare evenimente.");
-                        Console.WriteLine("2. Inscriere la eveniment.");
-                        Console.WriteLine("3 Istoricul participarii dumneavoastra la evenimentele noastre.");
-                        Console.WriteLine("4.Acordarea unui review.");
-                        Console.WriteLine("5.Verificare update evenimente.");
-                        int optiune = Convert.ToInt32(Console.ReadLine());
-
-                        switch (optiune)
-                        {
-                                case 1:
-                                        ObtineEvenimente();
-                                        break;
-                                case 2:
-                                        InscriereLaEveniment(EvenimenteDisponibile);
-                                        break;
-                                case 3:
-                                      VizualizareIstoric();
-                                        break;
-                                case 4:// AcordaReview();
-                                        return;
-                                default:
-                                        Console.WriteLine("Optiune invalida!");
-                                        break;
-                        }
-                }
-        }
-
-        
-        
 }
 
         

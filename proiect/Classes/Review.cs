@@ -11,7 +11,28 @@ public class Review
         NumarStele = numarStele;
         
     }
+    public void SalveazaReview()
+    {
+        string directoryPath = Directory.GetCurrentDirectory();
+        string folderName = "FisiereText";
+        string folderPath = Path.Combine(directoryPath, folderName);
 
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        string filePath = Path.Combine(folderPath, "reviews.txt");
+
+        using (StreamWriter writer = new StreamWriter(filePath, true))
+        {
+            writer.WriteLine($"Eveniment: {Persoana.Nume} a acordat {NumarStele} stele.");
+            writer.WriteLine($"Data: {DateTime.Now}");
+            writer.WriteLine(new string('-', 40));
+        }
+
+        Console.WriteLine("Review-ul a fost salvat cu succes!");
+    }
     public void AcordareFeedback(Event eveniment)
     {
         //verific daca clientul a participat la eveniment
@@ -29,7 +50,7 @@ public class Review
             {
                 NumarStele = stele;
                 Console.WriteLine($"Ati acordat {NumarStele} stele.");
-                break; // ies din buclă dupa ce verific
+                break; // ies din bucla dupa ce verific
             }
             else
             {

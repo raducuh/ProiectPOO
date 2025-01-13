@@ -37,13 +37,13 @@ public class Event
     {
         if (Reviews.Count == 0)
         {
-Console.WriteLine("Nu exista niciun review pentru acest eveniment.");
-return;
+            Console.WriteLine("Nu exista niciun review pentru acest eveniment.");
+            return;
         }
         Console.WriteLine($"Review-uri pentru evenimentul '{Nume}':");
         foreach (var review in Reviews)
         {
-            Console.WriteLine($"{review.Persoana.Nume} a acordat - {{review.NumarStele}} stele. ");
+            Console.WriteLine($"{review.Persoana.Nume} a acordat - {review.NumarStele} stele. ");
         }
     }
 
