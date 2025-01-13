@@ -21,7 +21,32 @@ public class Event
         Participanti = new List<Utilizator>();
         Reviews = new List<Review>();
     }
-    
+
+    public void AdaugaReview(Review review)
+    {
+        if (!Participanti.Contains(review.Persoana))
+        {
+            Console.WriteLine("Nu puteti adauga un review la un eveniment la care n-ati participat!");
+            return;
+        }
+        Reviews.Add(review);
+        Console.WriteLine("Review-ul dumneavoastra a fost adaugat!");
+    }
+
+    public void VizualizeazaReviewuri()
+    {
+        if (Reviews.Count == 0)
+        {
+Console.WriteLine("Nu exista niciun review pentru acest eveniment.");
+return;
+        }
+        Console.WriteLine($"Review-uri pentru evenimentul '{Nume}':");
+        foreach (var review in Reviews)
+        {
+            Console.WriteLine($"{review.Persoana.Nume} a acordat - {{review.NumarStele}} stele. ");
+        }
+    }
+
     public override string ToString()
     {
         return $"ID Eveniment: {EventId}\n" +
@@ -31,5 +56,6 @@ public class Event
                $"Data: {Data:yyyy-MM-dd}\n" +
                $"Participanti: {string.Join(", ", Participanti.Select(p => p.Nume))}\n";
     }
+    
 }
 

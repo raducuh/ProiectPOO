@@ -72,10 +72,61 @@ public class Client:Utilizator
                         foreach (var eveniment in IstoricEvenimente)
                         
                         {
-                            Console.WriteLine($"Evenimentul {eveniment.Nume} din data {eveniment.Data}");    
+                                Console.WriteLine($"Evenimentul {eveniment.Nume} din data {eveniment.Data}");    
                         }
                 }
         }
+
+    /*    public void VizualizareIstoric()
+        {
+                Console.WriteLine("Istoricul participarii dumneavoastra la evenimentele organizate:");
+                if (IstoricEvenimente.Count == 0)
+                {
+                        Console.WriteLine("Nu ati participat pana acum la niciun eveniment.");
+                        
+                }
+                else
+                {
+                        foreach (var eveniment in IstoricEvenimente)
+                        
+                        {
+                            Console.WriteLine($"Evenimentul {eveniment.Nume} din data {eveniment.Data}");    
+                        }
+                }
+        }*/
+    
+   /* public void AcordaReview()
+    {
+            if (IstoricEvenimente.Count == 0)
+            {
+                    Console.WriteLine("Nu aveti niciun eveniment la care sa acordati un review.");
+                    return;
+            }
+            Console.WriteLine("Selectati evenimentul la care doriti sa acordati un review:");
+            for (int i = 0; i < IstoricEvenimente.Count; i++)
+            {
+                    var eveniment = IstoricEvenimente[i];
+                    Console.WriteLine($"{i + 1}. Evenimentul '{eveniment.Nume}' din data {eveniment.Data}");
+            }
+
+            Console.WriteLine("Introduceti numarul evenimentului la care doriti sa acordati review-ul:");
+            if (!int.TryParse(Console.ReadLine(), out int evenimentIndex) || evenimentIndex < 1 || evenimentIndex > IstoricEvenimente.Count)
+            {
+                    Console.WriteLine("Numar eveniment invalid.");
+                    return;
+            }
+
+            var evenimentSelectat = IstoricEvenimente[evenimentIndex - 1];
+
+            // Creare obiect Review si acordare feedback
+            Review review = new Review(this, 0);  // 0 va fi înlocuit cu numărul de stele mai jos
+            review.AcordareFeedback(evenimentSelectat);
+
+            // Adaug review-ul la eveniment
+            evenimentSelectat.AdaugaReview(review);
+            Console.WriteLine($"Review-ul pentru evenimentul '{evenimentSelectat.Nume}' a fost adaugat cu succes!");
+    }
+    */
   
         public override void Meniu()
         {
@@ -100,8 +151,11 @@ public class Client:Utilizator
                                 case 3:
                                       VizualizareIstoric();
                                         break;
-                                case 4:
+                                case 4:// AcordaReview();
                                         return;
+                                default:
+                                        Console.WriteLine("Optiune invalida!");
+                                        break;
                         }
                 }
         }
