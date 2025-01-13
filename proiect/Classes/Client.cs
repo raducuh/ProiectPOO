@@ -130,7 +130,7 @@ public class Client:Utilizator
             }
             foreach (var eveniment in IstoricEvenimente)
             {
-                    string fileName = ($"Update_Eveniment_{eveniment.EventId}.txt");
+                    string fileName = $"Update_Eveniment_{eveniment.EventId}.txt";
                     string filePath = Path.Combine(folderPath, fileName);
 
                     if (File.Exists(filePath))
