@@ -121,7 +121,7 @@ public class Client:Utilizator
             review.SalveazaReview();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Review-ul pentru evenimentul '{evenimentSelectat.Nume}' a fost adaugat cu succes!");
-            Console.ResetColor();
+            Console.ResetColor();//nimic
     }
 
     public void VizualizareUpdate()
